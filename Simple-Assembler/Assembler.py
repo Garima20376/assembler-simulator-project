@@ -94,13 +94,18 @@ ins_list = [i for i in ins_list if i.split()[0] != 'var']
 
 
 if error_check == 0:
-  if 'hlt' not in ins_list:
-    output_list.append('Missing hlt instruction')
-    error_check = 1
+  hlt_check = 0
+  for line in ins_list:
+      if 'hlt' in line:
+        hlt_check = 1
+        if ins_list.index(line) !=  len(ins_list)-1:
+          output_list.append('hlt not being used as the last instruction')
+          error_check = 1
+          break
+  if hlt_check == 0:
+      output_list.append('Missing hlt instruction')
+      error_check = 1  
 
-  elif ins_list.index('hlt')!=len(ins_list)-1:
-    output_list.append('hlt not being used as the last instruction')
-    error_check = 1
 
 
 
@@ -196,7 +201,7 @@ if error_check == 0:
                 break
 
             a = len(ins_list) + var_list.index(line_split[2])
-            output_list.append('00101' + reg_dict[line_split[1]] + f'{a:08b}')
+            output_list.append('01001' + reg_dict[line_split[1]] + f'{a:08b}')
 
 
         elif line_split[0] == 'mul':
