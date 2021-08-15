@@ -183,7 +183,7 @@ if error_check == 0:
                 break
 
             a = len(ins_list) + var_list.index(line_split[2])
-            output_list.append('01001' + reg_dict[line_split[1]] + f'{a:08b}')
+            output_list.append('00100' + reg_dict[line_split[1]] + f'{a:08b}')
 
 
         elif line_split[0] == 'st':
@@ -201,7 +201,7 @@ if error_check == 0:
                 break
 
             a = len(ins_list) + var_list.index(line_split[2])
-            output_list.append('01001' + reg_dict[line_split[1]] + f'{a:08b}')
+            output_list.append('00101' + reg_dict[line_split[1]] + f'{a:08b}')
 
 
         elif line_split[0] == 'mul':
