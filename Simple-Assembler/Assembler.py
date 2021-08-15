@@ -98,7 +98,7 @@ if error_check == 0:
     hlt_check = 0
     for line in ins_list:
         if 'hlt' in line:
-          hlt_check = 
+          hlt_check = 1
           if ins_list.index(line) !=  len(ins_list)-1:
             output_list.append('hlt not being used as the last instruction')
             error_check = 1
@@ -373,9 +373,6 @@ if error_check == 0:
 
 for i in output_list:
     print(i)
-
-
-
 
 
 
