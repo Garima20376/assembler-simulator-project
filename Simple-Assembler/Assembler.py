@@ -177,7 +177,7 @@ if error_check == 0:
             if undefined_var(line_split[2]):
                 break
 
-            a = len(ins_list) - 1 + var_list.index(line_split[2])
+            a = len(ins_list) + var_list.index(line_split[2])
             output_list.append('01001' + reg_dict[line_split[1]] + f'{a:08b}')
 
 
@@ -195,7 +195,7 @@ if error_check == 0:
             if undefined_var(line_split[2]):
                 break
 
-            a = len(ins_list) - 1 + var_list.index(line_split[2])
+            a = len(ins_list) + var_list.index(line_split[2])
             output_list.append('01001' + reg_dict[line_split[1]] + f'{a:08b}')
 
 
