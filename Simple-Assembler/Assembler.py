@@ -13,7 +13,7 @@ reg_dict = {'R0': '000',
 
 label_mem = {}
 
-complete_input = sys.stdin.read()
+complete_input = sys.stdin.read(40)
 
 output_list = []
 
@@ -22,7 +22,7 @@ var_list = []
 
 def reg_typos(line_split):
     for i in line_split:
-        if i not in reg_dict:
+        if i not in reg_dict.keys():
             output_list.append("Illegal register names")
             return True
 
@@ -65,12 +65,6 @@ def undefined_label(str):
 
 
 ins_list = complete_input.split('\n')
-'''while True:
-        try:
-            line = input()
-        except EOFError:
-            break
-        ins_list.append(line)'''
 
 var_check = 0
 error_check = 0
@@ -97,7 +91,6 @@ for i,line in enumerate(ins_list):
 
 ins_list = [i for i in ins_list if i != '']
 ins_list = [i for i in ins_list if i.split()[0] != 'var']
-
 
 
 if error_check == 0:
@@ -371,7 +364,10 @@ if error_check == 0:
 
         else:
             output_list.append("Typos in instruction name")
-
+#print (var_list)
+#print(ins_list)
+#print(label_mem)
 for i in output_list:
     print(i)
+
 
