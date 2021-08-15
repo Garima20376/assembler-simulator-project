@@ -11,9 +11,10 @@ reg_dict = {'R0': '000',
             'R6': '110',
             'FLAGS': '111'}
 
-label_mem = {}
 
 complete_input = sys.stdin.read()
+
+label_mem = {}
 
 output_list = []
 
@@ -94,17 +95,17 @@ ins_list = [i for i in ins_list if i.split()[0] != 'var']
 
 
 if error_check == 0:
-  hlt_check = 0
-  for line in ins_list:
-      if 'hlt' in line:
-        hlt_check = 1
-        if ins_list.index(line) !=  len(ins_list)-1:
-          output_list.append('hlt not being used as the last instruction')
-          error_check = 1
-          break
-  if hlt_check == 0:
-      output_list.append('Missing hlt instruction')
-      error_check = 1  
+    hlt_check = 0
+    for line in ins_list:
+        if 'hlt' in line:
+          hlt_check = 
+          if ins_list.index(line) !=  len(ins_list)-1:
+            output_list.append('hlt not being used as the last instruction')
+            error_check = 1
+            break
+    if hlt_check == 0:
+        output_list.append('Missing hlt instruction')
+        error_check = 1  
 
 
 
@@ -262,8 +263,7 @@ if error_check == 0:
                 break
             if reg_typos(line_split[1:]):
                 break
-            output_list.append('01010' + '00' + reg_dict[line_split[1]] + reg_dict[line_split[2]] + reg_dict[
-                line_split[3]])
+            output_list.append('01010' + '00' + reg_dict[line_split[1]] + reg_dict[line_split[2]] + reg_dict[line_split[3]])
 
         elif (line_split[0] == 'or'):
             if len(line_split) != 4:
@@ -314,7 +314,7 @@ if error_check == 0:
             if FLAGS_error(line_split):
                 break
             if (line_split[1] in var_list):
-                output_list.append('Misuse of label as variable')
+                output_list.append('Misuse of variable as label')
                 break
             if undefined_label(line_split[1]):
                 break
@@ -328,7 +328,7 @@ if error_check == 0:
             if FLAGS_error(line_split):
                 break
             if (line_split[1] in var_list):
-                output_list.append('Misuse of label as variable')
+                output_list.append('Misuse of variable as label')       #changed misuse of label as variable in jump instructions
                 break
             if undefined_label(line_split[1]):
                 break
@@ -342,7 +342,7 @@ if error_check == 0:
             if FLAGS_error(line_split):
                 break
             if (line_split[1] in var_list):
-                output_list.append('Misuse of label as variable')
+                output_list.append('Misuse of variable as label')        
                 break
             if undefined_label(line_split[1]):
                 break
@@ -356,7 +356,7 @@ if error_check == 0:
             if FLAGS_error(line_split):
                 break
             if (line_split[1] in var_list):
-                output_list.append('Misuse of label as variable')
+                output_list.append('Misuse of variable as label')
                 break
             if undefined_label(line_split[1]):
                 break
@@ -373,5 +373,11 @@ if error_check == 0:
 
 for i in output_list:
     print(i)
+
+
+
+
+
+
 
 
