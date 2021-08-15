@@ -2,7 +2,7 @@ import sys
 
 from sys import stdin
 
-reg_dict = {'RO': '000',
+reg_dict = {'R0': '000',
             'R1': '001',
             'R2': '010',
             'R3': '011',
@@ -13,7 +13,7 @@ reg_dict = {'RO': '000',
 
 label_mem = {}
 
-#complete_input = sys.stdin.read()
+complete_input = sys.stdin.read()
 
 output_list = []
 
@@ -64,13 +64,13 @@ def undefined_label(str):
     return False
 
 
-#ins_list = complete_input.split('\n')
-while True:
+ins_list = complete_input.split('\n')
+'''while True:
         try:
             line = input()
         except EOFError:
             break
-        ins_list.append(line)
+        ins_list.append(line)'''
 
 var_check = 0
 error_check = 0
@@ -375,4 +375,3 @@ if error_check == 0:
 for i in output_list:
     print(i)
 
-print ('*')
