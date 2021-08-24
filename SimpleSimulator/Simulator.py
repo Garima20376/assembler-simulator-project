@@ -1,4 +1,4 @@
-#import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 import sys
 
 from sys import stdin
@@ -24,7 +24,6 @@ cycle_plot = []
 
 i = 0
 k = 0
-
 
 while bin_list[i] != '1001100000000000':
     output_str = ''
@@ -83,9 +82,8 @@ while bin_list[i] != '1001100000000000':
         cycle_plot.append(k)
 
     elif (bin_list[i][:5] == '00011'):  # mov reg
-        reg_value['111'] = 0
         reg_value[bin_list[i][10:13]] = reg_value[bin_list[i][13:16]]
-
+        reg_value['111'] = 0
         output_str += f'{i:08b} '
         for j in reg_value:
             output_str += f'{reg_value[j]:016b} '
@@ -276,6 +274,7 @@ while bin_list[i] != '1001100000000000':
         output_str += f'{i:08b} '
         for j in reg_value:
             output_str += f'{reg_value[j]:016b} '
+
         print(output_str)
         i = int(reg_value[bin_list[i][8:16]], 2)
         k += 1
@@ -284,38 +283,52 @@ while bin_list[i] != '1001100000000000':
 
     elif (bin_list[i][:5] == '10000'):  # jlt
         if reg_value['111'] == 4:
-            output_str += f'{i:08b} '
-            for j in reg_value:
-                output_str += f'{reg_value[j]:016b} '
-            print(output_str)
             i = int(reg_value[bin_list[i][8:16]], 2)
-            k += 1
-            mem_plot.append(i)
-            cycle_plot.append(j)
+        else:
+            i += 1
+
+        reg_value['111'] = 0
+        output_str += f'{i:08b} '
+        for j in reg_value:
+            output_str += f'{reg_value[j]:016b} '
+        print(output_str)
+        k += 1
+        mem_plot.append(i)
+        cycle_plot.append(j)
+
 
     elif (bin_list[i][:5] == '10001'):  # jgt
         if reg_value['111'] == 2:
-            output_str += f'{i:08b} '
-            for j in reg_value:
-                output_str += f'{reg_value[j]:016b} '
-            print(output_str)
             i = int(reg_value[bin_list[i][8:16]], 2)
-            k += 1
-            mem_plot.append(i)
-            cycle_plot.append(j)
+        else:
+            i += 1
+
+        reg_value['111'] = 0
+        output_str += f'{i:08b} '
+        for j in reg_value:
+            output_str += f'{reg_value[j]:016b} '
+        print(output_str)
+        k += 1
+        mem_plot.append(i)
+        cycle_plot.append(j)
+
 
     elif (bin_list[i][:5] == '10010'):  # je
         if reg_value['111'] == 1:
-            output_str += f'{i:08b} '
-            for j in reg_value:
-                output_str += f'{reg_value[j]:016b} '
-            print(output_str)
             i = int(reg_value[bin_list[i][8:16]], 2)
-            k += 1
-            mem_plot.append(i)
-            cycle_plot.append(j)
+        else:
+            i += 1
+        reg_value['111'] = 0
+        output_str += f'{i:08b} '
+        for j in reg_value:
+            output_str += f'{reg_value[j]:016b} '
+        print(output_str)
+        k += 1
+        mem_plot.append(i)
+        cycle_plot.append(j)
 
-if (bin_list[i][:5] == '10011'): # hlt
+
+if (bin_list[i][:5] == '10011'):  # hlt
     output_str = ''
     output_str += f'{i:08b} '
     for j in reg_value:
@@ -329,5 +342,5 @@ if (bin_list[i][:5] == '10011'): # hlt
 for l in bin_list:
     print(l)
 
-#plt.scatter(j, i)
-#plt.show()
+# plt.scatter(j, i)
+# plt.show()
