@@ -282,47 +282,54 @@ while bin_list[i] != '1001100000000000':
         cycle_plot.append(j)
 
     elif (bin_list[i][:5] == '10000'):  # jlt
+        output_str += f'{i:08b} '
+
         if reg_value['111'] == 4:
             i = int(reg_value[bin_list[i][8:16]], 2)
         else:
             i += 1
-
         reg_value['111'] = 0
-        output_str += f'{i:08b} '
+
         for j in reg_value:
             output_str += f'{reg_value[j]:016b} '
         print(output_str)
+
         k += 1
         mem_plot.append(i)
         cycle_plot.append(j)
 
 
     elif (bin_list[i][:5] == '10001'):  # jgt
+        output_str += f'{i:08b} '
+
         if reg_value['111'] == 2:
             i = int(reg_value[bin_list[i][8:16]], 2)
         else:
             i += 1
-
         reg_value['111'] = 0
-        output_str += f'{i:08b} '
+
         for j in reg_value:
             output_str += f'{reg_value[j]:016b} '
         print(output_str)
+
         k += 1
         mem_plot.append(i)
         cycle_plot.append(j)
 
 
     elif (bin_list[i][:5] == '10010'):  # je
+        output_str += f'{i:08b} '
+
         if reg_value['111'] == 1:
             i = int(reg_value[bin_list[i][8:16]], 2)
         else:
             i += 1
         reg_value['111'] = 0
-        output_str += f'{i:08b} '
+
         for j in reg_value:
             output_str += f'{reg_value[j]:016b} '
         print(output_str)
+
         k += 1
         mem_plot.append(i)
         cycle_plot.append(j)
