@@ -1,4 +1,4 @@
-# import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 import sys
 
 from sys import stdin
@@ -42,10 +42,10 @@ while bin_list[i] != '1001100000000000':
             output_str += f'{reg_value[j]:016b} '
         print(output_str)
 
-        i += 1
-        k += 1
         mem_plot.append(i)
         cycle_plot.append(k)
+        i += 1
+        k += 1
 
 
     elif (bin_list[i][:5] == '00001'):  # sub
@@ -62,10 +62,11 @@ while bin_list[i] != '1001100000000000':
             output_str += f'{reg_value[j]:016b} '
         print(output_str)
 
-        i += 1
-        k += 1
         mem_plot.append(i)
         cycle_plot.append(k)
+        i += 1
+        k += 1
+
 
 
     elif (bin_list[i][:5] == '00010'):  # mov imm
@@ -76,10 +77,11 @@ while bin_list[i] != '1001100000000000':
         for j in reg_value:
             output_str += f'{reg_value[j]:016b} '
         print(output_str)
-        i += 1
-        k += 1
+
         mem_plot.append(i)
         cycle_plot.append(k)
+        i += 1
+        k += 1
 
     elif (bin_list[i][:5] == '00011'):  # mov reg
         reg_value[bin_list[i][10:13]] = reg_value[bin_list[i][13:16]]
@@ -88,10 +90,11 @@ while bin_list[i] != '1001100000000000':
         for j in reg_value:
             output_str += f'{reg_value[j]:016b} '
         print(output_str)
+
+        mem_plot.append(i)
+        cycle_plot.append(k)
         i += 1
         k += 1
-        mem_plot.append(i)
-        cycle_plot.append(j)
 
     elif (bin_list[i][:5] == '00100'):  # load
         reg_value['111'] = 0
@@ -101,10 +104,12 @@ while bin_list[i] != '1001100000000000':
         for j in reg_value:
             output_str += f'{reg_value[j]:016b} '
         print(output_str)
-        i += 1
-        k += 1
+
+        plt.scatter(k, int(bin_list[i][8:16], 2))
         mem_plot.append(i)
         cycle_plot.append(k)
+        i += 1
+        k += 1
 
 
     elif (bin_list[i][:5] == '00101'):  # store
@@ -115,10 +120,12 @@ while bin_list[i] != '1001100000000000':
         for j in reg_value:
             output_str += f'{reg_value[j]:016b} '
         print(output_str)
-        i += 1
-        k += 1
+
+        plt.scatter(k, int(bin_list[i][8:16], 2))
         mem_plot.append(i)
         cycle_plot.append(k)
+        i += 1
+        k += 1
 
     elif (bin_list[i][:5] == '00110'):  # mul
         reg_value['111'] = 0
@@ -134,10 +141,10 @@ while bin_list[i] != '1001100000000000':
             output_str += f'{reg_value[j]:016b} '
         print(output_str)
 
-        i += 1
-        k += 1
         mem_plot.append(i)
         cycle_plot.append(k)
+        i += 1
+        k += 1
 
     elif (bin_list[i][:5] == '00111'):  # div
         reg_value['111'] = 0
@@ -148,10 +155,12 @@ while bin_list[i] != '1001100000000000':
         for j in reg_value:
             output_str += f'{reg_value[j]:016b} '
         print(output_str)
-        i += 1
-        k += 1
+
         mem_plot.append(i)
         cycle_plot.append(k)
+        i += 1
+        k += 1
+
 
     elif (bin_list[i][:5] == '01000'):  # right shift
         reg_value['111'] = 0
@@ -165,10 +174,11 @@ while bin_list[i] != '1001100000000000':
             output_str += f'{reg_value[j]:016b} '
         print(output_str)
 
-        i += 1
-        k += 1
         mem_plot.append(i)
         cycle_plot.append(k)
+        i += 1
+        k += 1
+
 
     elif (bin_list[i][:5] == '01001'):  # left shift
         reg_value['111'] = 0
@@ -183,10 +193,10 @@ while bin_list[i] != '1001100000000000':
             output_str += f'{reg_value[j]:016b} '
         print(output_str)
 
+        mem_plot.append(i)
+        cycle_plot.append(k)
         i += 1
         k += 1
-        mem_plot.append(i)
-        cycle_plot.append(j)
 
     elif (bin_list[i][:5] == '01010'):  # exor
         reg_value['111'] = 0
@@ -198,10 +208,11 @@ while bin_list[i] != '1001100000000000':
             output_str += f'{reg_value[j]:016b} '
         print(output_str)
 
+        mem_plot.append(i)
+        cycle_plot.append(k)
         i += 1
         k += 1
-        mem_plot.append(i)
-        cycle_plot.append(j)
+
 
     elif (bin_list[i][:5] == '01011'):  # or
         reg_value['111'] = 0
@@ -213,10 +224,10 @@ while bin_list[i] != '1001100000000000':
             output_str += f'{reg_value[j]:016b} '
         print(output_str)
 
+        mem_plot.append(i)
+        cycle_plot.append(k)
         i += 1
         k += 1
-        mem_plot.append(i)
-        cycle_plot.append(j)
 
 
     elif (bin_list[i][:5] == '01100'):  # and
@@ -229,10 +240,11 @@ while bin_list[i] != '1001100000000000':
             output_str += f'{reg_value[j]:016b} '
         print(output_str)
 
+        mem_plot.append(i)
+        cycle_plot.append(k)
         i += 1
         k += 1
-        mem_plot.append(i)
-        cycle_plot.append(j)
+
 
     elif (bin_list[i][:5] == '01101'):  # invert
         reg_value['111'] = 0
@@ -243,10 +255,10 @@ while bin_list[i] != '1001100000000000':
             output_str += f'{reg_value[j]:016b} '
         print(output_str)
 
+        mem_plot.append(i)
+        cycle_plot.append(k)
         i += 1
         k += 1
-        mem_plot.append(i)
-        cycle_plot.append(j)
 
     elif (bin_list[i][:5] == '01110'):  # compare
         reg_value['111'] = 0
@@ -262,10 +274,10 @@ while bin_list[i] != '1001100000000000':
             output_str += f'{reg_value[j]:016b} '
         print(output_str)
 
+        mem_plot.append(i)
+        cycle_plot.append(k)
         i += 1
         k += 1
-        mem_plot.append(i)
-        cycle_plot.append(j)
 
 
 
@@ -276,16 +288,18 @@ while bin_list[i] != '1001100000000000':
             output_str += f'{reg_value[j]:016b} '
 
         print(output_str)
-        i = int(reg_value[bin_list[i][8:16]], 2)
-        k += 1
         mem_plot.append(i)
-        cycle_plot.append(j)
+        cycle_plot.append(k)
+        i = int(bin_list[i][8:16], 2)
+        k += 1
 
     elif (bin_list[i][:5] == '10000'):  # jlt
         output_str += f'{i:08b} '
 
+        mem_plot.append(i)
+        cycle_plot.append(k)
         if reg_value['111'] == 4:
-            i = int(reg_value[bin_list[i][8:16]], 2)
+            i = int(bin_list[i][8:16], 2)
         else:
             i += 1
         reg_value['111'] = 0
@@ -295,15 +309,15 @@ while bin_list[i] != '1001100000000000':
         print(output_str)
 
         k += 1
-        mem_plot.append(i)
-        cycle_plot.append(j)
 
 
     elif (bin_list[i][:5] == '10001'):  # jgt
         output_str += f'{i:08b} '
 
+        mem_plot.append(i)
+        cycle_plot.append(k)
         if reg_value['111'] == 2:
-            i = int(reg_value[bin_list[i][8:16]], 2)
+            i = int(bin_list[i][8:16], 2)
         else:
             i += 1
         reg_value['111'] = 0
@@ -313,15 +327,15 @@ while bin_list[i] != '1001100000000000':
         print(output_str)
 
         k += 1
-        mem_plot.append(i)
-        cycle_plot.append(j)
 
 
     elif (bin_list[i][:5] == '10010'):  # je
         output_str += f'{i:08b} '
 
+        mem_plot.append(i)
+        cycle_plot.append(k)
         if reg_value['111'] == 1:
-            i = int(reg_value[bin_list[i][8:16]], 2)
+            i = int(bin_list[i][8:16], 2)
         else:
             i += 1
         reg_value['111'] = 0
@@ -331,8 +345,6 @@ while bin_list[i] != '1001100000000000':
         print(output_str)
 
         k += 1
-        mem_plot.append(i)
-        cycle_plot.append(j)
 
 
 if (bin_list[i][:5] == '10011'):  # hlt
@@ -341,13 +353,16 @@ if (bin_list[i][:5] == '10011'):  # hlt
     for j in reg_value:
         output_str += f'{reg_value[j]:016b} '
     print(output_str)
+
+    mem_plot.append(i)
+    cycle_plot.append(k)
     i += 1
     k += 1
-    mem_plot.append(i)
-    cycle_plot.append(j)
+
 
 for l in bin_list:
     print(l)
 
-# plt.scatter(j, i)
-# plt.show()
+plt.scatter(cycle_plot, mem_plot)
+plt.show()
+
