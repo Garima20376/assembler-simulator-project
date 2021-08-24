@@ -97,7 +97,7 @@ while bin_list[i] != '1001100000000000':
 
     elif (bin_list[i][:5] == '00100'):  # load
         reg_value['111'] = 0
-        reg_value[bin_list[i][6:9]] = bin_list[int(bin_list[i][8:16], 2)]
+        reg_value[bin_list[i][5:8]] = bin_list[int(bin_list[i][8:16], 2)]
         output_str += f'{i:08b} '
 
         for j in reg_value:
@@ -111,7 +111,7 @@ while bin_list[i] != '1001100000000000':
 
     elif (bin_list[i][:5] == '00101'):  # store
         reg_value['111'] = 0
-        bin_list[int(bin_list[i][8:16], 2)] = f'{reg_value[bin_list[i][6:9]]:016b}'
+        bin_list[int(bin_list[i][8:16], 2)] = f'{reg_value[bin_list[i][5:8]]:016b}'
         output_str += f'{i:08b} '
 
         for j in reg_value:
@@ -331,6 +331,3 @@ for l in bin_list:
 
 #plt.scatter(j, i)
 #plt.show()
-
-
-
