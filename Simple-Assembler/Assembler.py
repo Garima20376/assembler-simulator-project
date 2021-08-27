@@ -235,7 +235,7 @@ if error_check == 0:
                 break
             if FLAGS_error(line_split):
                 break
-            if reg_typos(line_split[1:]):
+            if reg_typos([line_split[1]]):
                 break
             if ill_imm(line_split):
                 break
@@ -248,7 +248,7 @@ if error_check == 0:
                 break
             if FLAGS_error(line_split):
                 break
-            if reg_typos(line_split[1:]):
+            if reg_typos([line_split[1]]):
                 break
             if ill_imm(line_split):
                 break
